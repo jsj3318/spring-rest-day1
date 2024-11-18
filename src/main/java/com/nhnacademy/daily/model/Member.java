@@ -1,9 +1,12 @@
 package com.nhnacademy.daily.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Member {
     private String id;
     private String name;
     private Integer age;
+    @JsonProperty("class")
     private String clazz;
     private Locale locale;
 

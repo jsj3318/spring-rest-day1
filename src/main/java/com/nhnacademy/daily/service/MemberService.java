@@ -17,9 +17,12 @@ public class MemberService {
         memberMap.put(member.getId(), member);
     }
 
-    private Member getMember(String id){
-        //TODO
-
-        return null;
+    public Member getMember(String id){
+        return memberMap.get(id);
     }
+
+    public Member addMember(Member member){
+        return memberMap.put(member.getId(), member);
+    }
+
 }
