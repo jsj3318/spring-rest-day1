@@ -1,11 +1,11 @@
 package com.nhnacademy.daily.controller;
 
 import com.nhnacademy.daily.model.Member;
+import com.nhnacademy.daily.model.createCommand.MemberCreateCommand;
 import com.nhnacademy.daily.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,5 +18,24 @@ public class MemberController {
         Member member = memberService.getMember(id);
         return member;
     }
-    
+
+    @PostMapping("/members")
+    public ResponseEntity registerMember(
+            @RequestBody MemberCreateCommand memberCreateCommand
+    ) {
+        Member member = memberService.addMember(
+                new Member(
+                        memberCreateCommand.getId(),
+                        memberCreateCommand.getName(),
+                        memberCreateCommand.getAge(),
+                        memberCreateCommand.getClazz(),
+                        memberCreateCommand.getLocale()
+                )
+        );
+
+        //TODO member가 null이 아니면 메신저 알림 보내기
+
+        return ResponseEntity.ok().build();
+    }
+
 }

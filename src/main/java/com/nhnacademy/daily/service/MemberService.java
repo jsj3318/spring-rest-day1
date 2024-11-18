@@ -6,6 +6,7 @@ import com.nhnacademy.daily.model.type.Locale;
 import com.nhnacademy.daily.model.Member;
 import org.springframework.stereotype.Service;
 
+import javax.management.openmbean.KeyAlreadyExistsException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,9 @@ public class MemberService {
     }
 
     public Member addMember(Member member){
+        if(memberMap.containsKey(member.getId())){
+            throw new KeyAlreadyExistsException(member.getId() + " : 이미 존재하는 id 입니다.");
+        }
         return memberMap.put(member.getId(), member);
     }
 
