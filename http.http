@@ -4,3 +4,6 @@ GET https://examples.http-client.intellij.net/get
 
 ### getMember
 GET localhost:8080/members/baek
+
+### getProject
+GET localhost:8080/projects/black&white
