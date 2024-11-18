@@ -1,6 +1,7 @@
 package com.nhnacademy.daily.service;
 
-import com.nhnacademy.daily.model.Locale;
+import com.nhnacademy.daily.model.type.ClassType;
+import com.nhnacademy.daily.model.type.Locale;
 import com.nhnacademy.daily.model.Member;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class MemberService {
 
     public MemberService() {
         this.memberMap = new HashMap<>();
-        Member member = new Member("baek", "백종원",  50, "A", Locale.KO);
+        Member member = new Member("baek", "백종원",  50, ClassType.A, Locale.KO);
         memberMap.put(member.getId(), member);
     }
 

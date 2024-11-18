@@ -1,5 +1,7 @@
 package com.nhnacademy.daily.model;
 
+import com.nhnacademy.daily.model.type.ProjectType;
+
 import java.time.LocalDate;
 
 public class Project {
