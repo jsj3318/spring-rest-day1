@@ -5,5 +5,11 @@ GET https://examples.http-client.intellij.net/get
 ### getMember
 GET localhost:8080/members/baek
 
+### getMember error
+GET localhost:8080/members/no
+
 ### getProject
 GET localhost:8080/projects/black&white
+
+### getProject error
+GET localhost:8080/projects/no

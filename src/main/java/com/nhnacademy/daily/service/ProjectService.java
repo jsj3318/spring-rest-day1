@@ -1,5 +1,6 @@
 package com.nhnacademy.daily.service;
 
+import com.nhnacademy.daily.exception.ProjectNotFoundException;
 import com.nhnacademy.daily.model.Project;
 import com.nhnacademy.daily.model.type.ProjectType;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,11 @@ public class ProjectService {
     }
 
     public Project getProject(String code) {
-        return projectMap.get(code);
+        Project project = projectMap.get(code);
+        if (project == null) {
+            throw new ProjectNotFoundException(code + " : 존재하지 않는 프로젝트 입니다.");
+        }
+        return project;
     }
 
     public Project addProject(Project project) {
