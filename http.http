@@ -34,8 +34,17 @@ Content-Type: application/json
 {
   "code": "nhn",
   "localDate": "2024-12-25",
-  "type": "PUBLIC"
+  "type": "PRIVATE"
 }
 
 ### 프로젝트 nhn 조회
 GET localhost:8080/projects/nhn
+
+### 모든 멤버 리스트 조회
+GET localhost:8080/membersAll
+
+### 모든 프로젝트 리스트 조회
+GET localhost:8080/projectsAll
+
+### 멤버 리스트 페이지 테스트
+GET localhost:8080/membersAll?page=1&size=1

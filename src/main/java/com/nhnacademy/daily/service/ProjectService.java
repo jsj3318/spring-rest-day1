@@ -3,11 +3,16 @@ package com.nhnacademy.daily.service;
 import com.nhnacademy.daily.exception.ProjectNotFoundException;
 import com.nhnacademy.daily.model.Project;
 import com.nhnacademy.daily.model.type.ProjectType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.management.openmbean.KeyAlreadyExistsException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -34,4 +39,16 @@ public class ProjectService {
         }
         return projectMap.put(project.getCode(), project);
     }
+
+    public Page<Project> getAllProjects(Pageable pageable) {
+        List<Project> projectList = new ArrayList<>(projectMap.values());
+
+        int start = (int)pageable.getOffset();
+        int end = Math.min(start + pageable.getPageSize(), projectList.size());
+
+        List<Project> pagedProjects = (start <= end) ? projectList.subList(start, end) : new ArrayList<>();
+
+        return new PageImpl<>(pagedProjects, pageable, projectList.size());
+    }
+
 }

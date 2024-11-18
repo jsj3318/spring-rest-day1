@@ -4,8 +4,11 @@ import com.nhnacademy.daily.model.Project;
 import com.nhnacademy.daily.model.createCommand.ProjectCreateCommand;
 import com.nhnacademy.daily.service.ProjectService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,8 +17,7 @@ public class ProjectController {
 
     @GetMapping("/projects/{code}")
     public Project getProject(@PathVariable String code) {
-        Project project = projectService.getProject(code);
-        return project;
+        return projectService.getProject(code);
     }
 
     @PostMapping("/projects")
@@ -30,6 +32,13 @@ public class ProjectController {
                 )
         );
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/projectsAll")
+    public List<Project> getAllProjects(
+            Pageable pageable
+    ) {
+        return projectService.getAllProjects(pageable).getContent();
     }
 
 }
