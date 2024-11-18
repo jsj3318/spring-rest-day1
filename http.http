@@ -13,3 +13,29 @@ GET localhost:8080/projects/black&white
 
 ### getProject error
 GET localhost:8080/projects/no
+
+### 새 유저 등록 jsj
+POST localhost:8080/members
+Content-Type: application/json
+
+{
+  "id": "jsj",
+  "age": 25,
+  "name": "조승주"
+}
+
+### jsj 유저 조회
+GET localhost:8080/members/jsj
+
+### 새 프로젝트 생성 nhn
+POST localhost:8080/projects
+Content-Type: application/json
+
+{
+  "code": "nhn",
+  "localDate": "2024-12-25",
+  "type": "PUBLIC"
+}
+
+### 프로젝트 nhn 조회
+GET localhost:8080/projects/nhn

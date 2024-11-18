@@ -33,7 +33,7 @@ public class MemberController {
                 )
         );
 
-        //TODO member가 null이 아니면 메신저 알림 보내기
+        //TODO member 생성 메신저 알림 보내기
 
         return ResponseEntity.ok().build();
     }

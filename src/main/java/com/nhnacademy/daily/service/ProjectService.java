@@ -5,6 +5,7 @@ import com.nhnacademy.daily.model.Project;
 import com.nhnacademy.daily.model.type.ProjectType;
 import org.springframework.stereotype.Service;
 
+import javax.management.openmbean.KeyAlreadyExistsException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,9 @@ public class ProjectService {
     }
 
     public Project addProject(Project project) {
+        if(projectMap.containsKey(project.getCode())) {
+            throw new KeyAlreadyExistsException(project.getCode() + " : 이미 존재하는 code 입니다.");
+        }
         return projectMap.put(project.getCode(), project);
     }
 }
