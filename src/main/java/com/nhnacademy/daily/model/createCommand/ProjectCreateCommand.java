@@ -8,6 +8,6 @@ import java.time.LocalDate;
 @Setter
 public class ProjectCreateCommand {
     private String code;
-    private LocalDate localDate;
-    private ProjectType type;
+    private LocalDate localDate = LocalDate.now();
+    private ProjectType type = ProjectType.PRIVATE;
 }

@@ -11,6 +11,6 @@ public class MemberCreateCommand {
     private String name;
     private Integer age;
     @JsonProperty("class")
-    private ClassType clazz;
-    private Locale locale;
+    private ClassType clazz = ClassType.A;
+    private Locale locale = Locale.KO;
 }
