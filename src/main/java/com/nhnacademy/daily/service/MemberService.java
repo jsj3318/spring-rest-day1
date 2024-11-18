@@ -1,5 +1,6 @@
 package com.nhnacademy.daily.service;
 
+import com.nhnacademy.daily.exception.MemberNotFoundException;
 import com.nhnacademy.daily.model.type.ClassType;
 import com.nhnacademy.daily.model.type.Locale;
 import com.nhnacademy.daily.model.Member;
@@ -19,7 +20,11 @@ public class MemberService {
     }
 
     public Member getMember(String id){
-        return memberMap.get(id);
+        Member member = memberMap.get(id);
+        if(member == null){
+            throw new MemberNotFoundException(id + " : 존재하지 않는 멤버 입니다.");
+        }
+        return member;
     }
 
     public Member addMember(Member member){
