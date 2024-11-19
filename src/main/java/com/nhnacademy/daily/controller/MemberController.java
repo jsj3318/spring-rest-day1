@@ -18,7 +18,8 @@ public class MemberController {
 
     @GetMapping("/members/{id}")
     public Member getMember(@PathVariable String id) {
-        return memberService.getMember(id);
+        Member member = memberService.getMember(id);
+        return member;
     }
 
     @PostMapping("/members")
