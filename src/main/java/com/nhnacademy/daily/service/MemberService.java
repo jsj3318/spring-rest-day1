@@ -1,9 +1,11 @@
 package com.nhnacademy.daily.service;
 
 import com.nhnacademy.daily.exception.MemberNotFoundException;
+import com.nhnacademy.daily.model.dooray.MessagePayload;
 import com.nhnacademy.daily.model.type.ClassType;
 import com.nhnacademy.daily.model.type.Locale;
 import com.nhnacademy.daily.model.Member;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,9 @@ import java.util.Map;
 @Service
 public class MemberService {
     private Map<String, Member> memberMap;
+
+    @Autowired
+    private DooraySendClient dooraySendClient;
 
     public MemberService() {
         this.memberMap = new HashMap<>();
@@ -37,7 +42,16 @@ public class MemberService {
         if(memberMap.containsKey(member.getId())){
             throw new KeyAlreadyExistsException(member.getId() + " : 이미 존재하는 id 입니다.");
         }
-        return memberMap.put(member.getId(), member);
+
+        Member res = memberMap.put(member.getId(), member);
+
+        // 두레이에 알림 보내기
+        // https://hook.dooray.com/services/3204376758577275363/3939383629139110347/6GoYNd1QT2SBd1DXke0Yrg
+        MessagePayload messagePayload = new MessagePayload("유저 등록 알림",
+                member.getName() + "(" + member.getId() + ") 유저 등록 됨");
+        dooraySendClient.sendMessage(messagePayload, 3204376758577275363L, 3939383629139110347L, "6GoYNd1QT2SBd1DXke0Yrg");
+
+        return res;
     }
 
     public Page<Member> getAllMembers(Pageable pageable){

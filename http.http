@@ -78,10 +78,16 @@ Accept: text/csv
 GET localhost:8080/membersAll
 Accept: text/csv
 
-### csv로 멤버 등록 테스트
+### csv로 멤버 등록
 POST localhost:8080/members
 Content-Type: text/csv
 
 id,name,age,class,locale
 marco,마르코,444,A,KO
 
+### csv로 멤버 등록
+POST localhost:8080/members
+Content-Type: text/csv
+
+id,name,age,class,locale
+DaeSangHoon,김상훈,25,B,KO
