@@ -69,3 +69,15 @@ Content-Type: application/json
 
 ### 프로젝트 흑백 의 멤버들 조회
 GET localhost:8080/projectMembers/black&white
+
+### csv로 멤버 출력 테스트
+GET localhost:8080/members/baek
+Accept: text/csv
+
+#### csv로 멤버 등록 테스트
+#POST localhost:8080/members
+#Content-Type: text/csv
+
+## csv로 멤버 리스트 출력 테스트
+GET localhost:8080/membersAll
+Accept: text/csv
