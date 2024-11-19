@@ -34,7 +34,7 @@ public class ProjectController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/projectsAll")
+    @GetMapping("/projects")
     public List<Project> getAllProjects(
             Pageable pageable
     ) {

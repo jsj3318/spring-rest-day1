@@ -42,13 +42,13 @@ Content-Type: application/json
 GET localhost:8080/projects/nhn
 
 ### 모든 멤버 리스트 조회
-GET localhost:8080/membersAll
+GET localhost:8080/members
 
 ### 모든 프로젝트 리스트 조회
-GET localhost:8080/projectsAll
+GET localhost:8080/projects
 
 ### 멤버 리스트 페이지 테스트
-GET localhost:8080/membersAll?page=1&size=1
+GET localhost:8080/members?page=1&size=1
 
 ### 프로젝트에 멤버 추가 흑백 <= 백종원
 POST localhost:8080/projectMembers
@@ -76,7 +76,7 @@ GET localhost:8080/members/baek
 Accept: text/csv
 
 ### csv로 멤버 리스트 출력
-GET localhost:8080/membersAll
+GET localhost:8080/members
 Accept: text/csv
 
 ### csv로 멤버 등록
@@ -85,3 +85,5 @@ Content-Type: text/csv
 
 id,password,name,age,class,locale,role
 marco,4444,마르코,444,A,KO,admin
+
+

@@ -41,7 +41,7 @@ public class MemberController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/membersAll")
+    @GetMapping("/members")
     public List<Member> getMembers(
         Pageable pageable
     ) {
