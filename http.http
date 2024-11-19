@@ -75,7 +75,7 @@ GET localhost:8080/projectMembers/black&white
 GET localhost:8080/members/baek
 Accept: text/csv
 
-### csv로 멤버 리스트 출력 테스트
+### csv로 멤버 리스트 출력
 GET localhost:8080/membersAll
 Accept: text/csv
 

@@ -1,5 +1,6 @@
 package com.nhnacademy.daily.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -18,7 +19,15 @@ public class Member {
     private Locale locale;
     private Role role;
 
-    public Member(String id, String password, String name, Integer age, ClassType clazz, Locale locale, Role role) {
+    @JsonCreator
+    public Member(
+            @JsonProperty("id") String id,
+            @JsonProperty("password") String password,
+            @JsonProperty("name") String name,
+            @JsonProperty("age") Integer age,
+            @JsonProperty("class") ClassType clazz,
+            @JsonProperty("locale") Locale locale,
+            @JsonProperty("role") Role role) {
         this.id = id;
         this.password = password;
         this.name = name;
