@@ -51,4 +51,8 @@ public class ProjectService {
         return new PageImpl<>(pagedProjects, pageable, projectList.size());
     }
 
+    public boolean isExist(String code){
+        return projectMap.containsKey(code);
+    }
+
 }

@@ -51,4 +51,8 @@ public class MemberService {
         return new PageImpl<>(pagedProjects, pageable, memberList.size());
     }
 
+    public boolean isExist(String id){
+        return memberMap.containsKey(id);
+    }
+
 }
