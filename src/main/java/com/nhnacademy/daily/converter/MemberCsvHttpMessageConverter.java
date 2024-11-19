@@ -38,9 +38,16 @@ public class MemberCsvHttpMessageConverter extends AbstractHttpMessageConverter<
     protected void writeInternal(Member member, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
         outputMessage.getHeaders().setContentType(MediaType.valueOf("text/csv; charset=UTF-8"));
         try (Writer writer = new OutputStreamWriter(outputMessage.getBody())) {
-            writer.write("id,name,age,class,locale");
+            writer.write("id,password,name,age,class,locale,role");
             writer.write(System.lineSeparator());
-            writer.write(member.getId() + "," + member.getName() + "," + member.getAge() + "," + member.getClazz() + "," + member.getLocale());
+            writer.write(
+                    member.getId() + "," +
+                    member.getPassword() + "," +
+                    member.getName() + "," +
+                    member.getAge() + "," +
+                    member.getClazz() + "," +
+                    member.getLocale() + "," +
+                    member.getRole());
         }
 
     }

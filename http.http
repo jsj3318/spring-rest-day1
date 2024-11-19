@@ -20,6 +20,7 @@ Content-Type: application/json
 
 {
   "id": "jsj",
+  "password": "1234",
   "age": 25,
   "name": "조승주"
 }
@@ -82,12 +83,5 @@ Accept: text/csv
 POST localhost:8080/members
 Content-Type: text/csv
 
-id,name,age,class,locale
-marco,마르코,444,A,KO
-
-### csv로 멤버 등록
-POST localhost:8080/members
-Content-Type: text/csv
-
-id,name,age,class,locale
-DaeSangHoon,김상훈,25,B,KO
+id,password,name,age,class,locale,role
+marco,4444,마르코,444,A,KO,admin

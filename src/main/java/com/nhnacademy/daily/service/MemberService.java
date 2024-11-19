@@ -5,6 +5,7 @@ import com.nhnacademy.daily.model.dooray.MessagePayload;
 import com.nhnacademy.daily.model.type.ClassType;
 import com.nhnacademy.daily.model.type.Locale;
 import com.nhnacademy.daily.model.Member;
+import com.nhnacademy.daily.model.type.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -26,7 +27,7 @@ public class MemberService {
 
     public MemberService() {
         this.memberMap = new HashMap<>();
-        Member member = new Member("baek", "백종원",  50, ClassType.A, Locale.KO);
+        Member member = new Member("baek", "1234", "백종원",  50, ClassType.A, Locale.KO, Role.ADMIN);
         memberMap.put(member.getId(), member);
     }
 

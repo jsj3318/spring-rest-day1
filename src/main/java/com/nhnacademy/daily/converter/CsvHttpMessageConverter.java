@@ -4,6 +4,7 @@ import com.nhnacademy.daily.model.Member;
 import com.nhnacademy.daily.model.createCommand.MemberCreateCommand;
 import com.nhnacademy.daily.model.type.ClassType;
 import com.nhnacademy.daily.model.type.Locale;
+import com.nhnacademy.daily.model.type.Role;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -25,16 +26,23 @@ public class CsvHttpMessageConverter extends AbstractHttpMessageConverter<Member
 
     @Override
     protected MemberCreateCommand readInternal(Class<? extends MemberCreateCommand> clazz, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
-        //id,name,age,class,locale
-        //jsj,조승주,25,A,KO
+        //id,password,name,age,class,locale,role
+        //jsj,1234,조승주,25,A,KO,member
 
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputMessage.getBody()))) {
             String header = bufferedReader.readLine();
             String body = bufferedReader.readLine();
         if( header != null && body != null ) {
             String[] info = body.split(",");
-            if(info.length == 5){
-            return new MemberCreateCommand(info[0], info[1], Integer.parseInt(info[2]), ClassType.fromString(info[3]), Locale.fromString(info[4]));
+            if(info.length == 7){
+            return new MemberCreateCommand(
+                    info[0],
+                    info[1],
+                    info[2],
+                    Integer.parseInt(info[3]),
+                    ClassType.fromString(info[4]),
+                    Locale.fromString(info[5]),
+                    Role.forValue(info[6]));
             }
         }
         } catch (Exception e) {

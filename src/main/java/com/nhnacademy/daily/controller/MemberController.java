@@ -29,10 +29,12 @@ public class MemberController {
         Member member = memberService.addMember(
                 new Member(
                         memberCreateCommand.getId(),
+                        memberCreateCommand.getPassword(),
                         memberCreateCommand.getName(),
                         memberCreateCommand.getAge(),
                         memberCreateCommand.getClazz(),
-                        memberCreateCommand.getLocale()
+                        memberCreateCommand.getLocale(),
+                        memberCreateCommand.getRole()
                 )
         );
 
